@@ -1,0 +1,15 @@
+.main-Navbar{
+   background-color: rgb(57, 178, 214);
+   color:white;
+}
+
+.second-Heading{
+    display: inline;
+    width:15rem;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.main-Heading{
+    font-weight: bold;
+}
