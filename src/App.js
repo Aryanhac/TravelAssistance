@@ -1,11 +1,11 @@
 import React from "react";
-import NavigationBar from "./component/NavigationBar";
+import TravelAssistance from "./component/TravelAssistance";
 
 
 function App() {
   return (
     <div className="App">
-    <NavigationBar/>
+    <TravelAssistance/>
     </div>
   );
 }
