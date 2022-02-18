@@ -1,6 +1,7 @@
 import React from 'react';
 import {Navbar,Form,Container,FormControl} from 'react-bootstrap';
 import './NavigationBar.css'
+import {Autocomplete} from '@react-google-maps/api';
 
 const NavigationBar = () => {
   return (
@@ -13,12 +14,14 @@ const NavigationBar = () => {
            <div className="second-Heading">
              Explore Your Place
            </div>
+          {/* <Autocomplete> */}
           <FormControl
             type="search"
             placeholder="India,US,NewYork "
             className="me-2"
             aria-label="Search"
           />
+          {/* </Autocomplete> */}
         </Form>
       </Navbar.Collapse>
     </Container>
