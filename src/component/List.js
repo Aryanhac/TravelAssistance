@@ -1,10 +1,28 @@
 import {React,useState} from 'react'
-import Cards from './Cards'
+import Cards from './Place'
 import {Col,Container,Row} from 'react-bootstrap'
 
 const List = () => {
     const [type,setType]=useState('Restaurants');
     const [rating,setRating]=useState('All');
+    const [places,setPlace]=useState([
+        {name:'agra'},
+        {name:'mumbai'},
+        {name:'agra'},
+        {name:'mumbai'},
+        {name:'agra'},
+        {name:'mumbai'},
+        {name:'agra'},
+        {name:'mumbai'},
+        {name:'agra'},
+        {name:'mumbai'},
+        {name:'agra'},
+        {name:'mumbai'},
+        {name:'agra'},
+        {name:'mumbai'},
+        {name:'agra'},
+        {name:'mumbai'}
+    ])
     const sType=(value)=>{
         setType(value);
     }
@@ -45,7 +63,11 @@ const List = () => {
                     </Col>
                 </Row>
                 <div style={{ height: '72vh', overflowY: 'scroll', marginTop: '15px' }}>
-                    <Cards />
+                    {
+                        places?.map((place,i)=>{                       // ?. means if places are available then run map otherwise not
+                          return   <Cards key={i} place={place}/>
+                        })
+                    }
                 </div>
             </Container>
         </Col>
