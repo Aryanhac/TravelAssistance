@@ -8,36 +8,40 @@ const Map = ({setCoordinates}) => {
   const [lng, setLng] = useState(-70.9);
   const [lat, setLat] = useState(42.35);
   const [zoom, setZoom] = useState(9);
+  // const[bound,setBounds]=useState();
   useEffect(()=>{
-    navigator.geolocation.getCurrentPosition(({coords:{latitude,longitude}})=>{
       if (map.current) return; // initialize map only once
       map.current = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [longitude, latitude],
+        center: [lng, lat],
         zoom: zoom
       });
-    })
    });
-  
-  useEffect(()=>{
-    if (!map.current) return;
-    map.current.on('moveend', () => {
-      console.log('A moveend event occurred.');
-      setCoordinates({lat:lat,lng:lng});
-      console.log(lat);
-      });
-  })
+
+  // useEffect(()=>{
+  //   if (!map.current) return;
+  //   map.current.on('moveend', () => {
+  //     setCoordinates(map.current.getBounds());
+  //     console.log(map.current.getBounds());
+  //     });
+  // },[setCoordinates]);
+
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
-    map.current.on('move', () => {
+    map.current.on('moveend', () => {
     setLng(map.current.getCenter().lng.toFixed(4));
     setLat(map.current.getCenter().lat.toFixed(4));
     setZoom(map.current.getZoom().toFixed(2));
+    console.log(map.current.getBounds());
+    setCoordinates(map.current.getBounds()); 
     });
-    });
+    },[]);
+    
+  
+
   return (
-    <Col xs={8} className='mt-4 ml-8'>
+    <Col xs={8} className='mt-4 ml-8'> 
       <div>
      
 <div className="sidebar">

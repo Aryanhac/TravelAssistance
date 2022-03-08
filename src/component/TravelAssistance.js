@@ -8,7 +8,8 @@ const TravelAssistance = () => {
     const [places,setPlaces]=useState();
     const [coordinates,setCoordinates]=useState();
     const [bound,setBound]=useState(null);
-   
+     
+
     useEffect(()=>{
        getPlaces().then((data)=>{
            console.log(data);
